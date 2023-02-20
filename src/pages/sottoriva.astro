@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { HTHeader} from "@computational-biology-web-unit/ht-vue/components"
+---
+
+<Layout title="Sottoriva Group">
+    <HTHeader slot="header" is-web={true} client:load>
+        <a slot="logo" href="https://humantechnopole.it/en/research-groups/sottoriva-group/" target="_blank"
+            class="link">Sottoriva Group
+        </a>
+        <div slot="nav" class="header-nav">
+            <a href="/" class="link">
+                HT CBRC Groups
+            </a>
+        </div>
+    </HTHeader>
+</Layout>

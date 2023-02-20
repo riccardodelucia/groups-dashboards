@@ -1,25 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { HTHeader} from "@computational-biology-web-unit/ht-vue/components"
+
+import GroupCard from '../components/GroupCard.astro';
+
+const groups = [
+	{ slug: "", src: "/assets/images/groups/calviello-300x300.jpeg", name: "Calviello Group", center:"Computational Biology"},
+	{ slug: "/davila-velderrain", src: "/assets/images/groups/davila-300x300.jpeg", name: "Davila-Velderrain Group", center:"Computational Biology"},
+	{ slug: "", src: "/assets/images/groups/glastonbury-300x300.jpeg", name: "Glastonbury Group", center:"Computational Biology"},
+	{ slug: "/iorio", src: "/assets/images/groups/iorio-300x300.jpeg", name: "Iorio Group", center:"Computational Biology"},
+	{ slug: "", src: "/assets/images/groups/jug-300x370.jpeg", name: "Jug Group", center:"Computational Biology"},
+	{ slug: "", src: "/assets/images/groups/pinheiro-300x225.jpeg", name: "Pinheiro Group", center:"Computational Biology"},
+	{ slug: "/sottoriva", src: "/assets/images/groups/sottoriva-300x300.jpeg", name: "Sottoriva Group", center:"Computational Biology"},
+]
 ---
 
 <Layout title="Groups Dashboards">
-	<div class="container-grid">
+	<HTHeader slot="header" is-web={true} client:load>
+	</HTHeader>
+	<h1 slot="default" class="center">HT CBRC Groups' Dashboards</h1>
+	<div slot="default" class="container-grid">
+		{groups.map(group=>(<a class="card-link" href={group.slug}><GroupCard group={group}></GroupCard></a>))}
 	</div>
+	<a class="groups-link" href="https://humantechnopole.it/en/research-centres/computational-biology/">
+		HT Computational Biology Research Center Official Page</a>
 </Layout>
 
 <style lang="scss">
 .container-grid {
 	display: grid;
 	grid-gap: var(--space-md);
-	padding-top: var(--space-md);
-	padding-bottom: var(--space-md);
+	margin-top: var(--space-md);
+	margin-bottom: var(--space-md);
 
 
 	grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
 	justify-items: center;
+}
 
-	& > * {
-	  min-width: 30rem;
-	}
+.card-link {
+	text-decoration: none;
+	color: inherit;
+}
+
+.groups-link {
+	display: block;
+	margin: auto;
+	text-align: center;
+	margin-top: var(--space-lg);
+	margin-bottom: var(--space-lg);
 }
 </style>

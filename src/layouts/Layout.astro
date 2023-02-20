@@ -1,7 +1,6 @@
 ---
 import '@computational-biology-web-unit/ht-design/style.css';
-import {HTFooter, HTHeader} from "@computational-biology-web-unit/ht-vue/components"
-import VueFeather from "vue-feather";
+import {HTFooter} from "@computational-biology-web-unit/ht-vue/components"
 
 const { title } = Astro.props;
 ---
@@ -16,15 +15,10 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<HTHeader is-web={true} client:load>
-				<div slot="nav" class="header-nav">
-					<a href="/" class="link">
-					<VueFeather type="grid"></VueFeather>
-					</a>
-				</div>
-		</HTHeader>
+		<slot name="header"></slot>
+
 		<div class="web-container">
-			<slot></slot>
+			<slot name="default"></slot>
 		</div>
 		<HTFooter></HTFooter>
 	</body>
