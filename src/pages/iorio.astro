@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { HTHeader} from "@computational-biology-web-unit/ht-vue/components"
+import logo from "../assets/images/logos/iorio-logo-white.svg"
+---
+
+<Layout title="Iorio Group">
+    <HTHeader slot="header" is-web={true} client:load>
+        <a
+        slot="logo"
+        href="https://humantechnopole.it/en/research-groups/iorio-group/"
+        target="_blank"
+        class="header__logo-link"
+        ><img
+          src={logo}
+          alt="Iorio logo"
+          class="header__logo logo-iorio" />
+        </a>
+        <div slot="nav" class="header-nav">
+            <a href="/" class="link">
+                HT CBRC Groups
+            </a>
+        </div>
+    </HTHeader>
+</Layout>
