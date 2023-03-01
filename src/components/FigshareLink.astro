@@ -1,0 +1,16 @@
+---
+import logo from "../images/minilinks/figshare.png";
+
+const { url } = Astro.props;
+---
+
+<a href={url} target="_blank">
+  <img class="logo" src={logo} alt="Figshare logo" />
+</a>
+
+<style lang="scss">
+  .logo {
+    width: 2rem;
+    height: 2rem;
+  }
+</style>

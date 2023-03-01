@@ -1,0 +1,15 @@
+---
+import logo from "../images/minilinks/shiny.png";
+
+const { url } = Astro.props;
+---
+
+<a href={url} target="_blank">
+  <img class="logo" src={logo} alt="Paper logo" />
+</a>
+
+<style lang="scss">
+  .logo {
+    width: 2.5rem;
+  }
+</style>

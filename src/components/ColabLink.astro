@@ -1,0 +1,15 @@
+---
+import logo from "../images/minilinks/colab.svg"
+
+const {url} = Astro.props;
+---
+
+<a href={url} target="_blank">
+    <img class="logo" src={logo} alt="Colab logo"/>
+</a>
+
+<style lang="scss">
+    .logo {
+        width: 4rem;
+    }
+</style>

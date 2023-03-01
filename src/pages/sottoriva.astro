@@ -1,17 +1,73 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { HTHeader} from "@computational-biology-web-unit/ht-vue/components"
+import Layout from "../layouts/Layout.astro";
+import { HTHeader } from "@computational-biology-web-unit/ht-vue/components";
+import DashboardCard from "../components/DashboardCard.astro";
+
+import GitHubLink from "../components/GitHubLink.astro";
+import PaperLink from "../components/PaperLink.astro";
+import EgaLink from "../components/EgaLink.astro";
+import FigshareLink from "../components/FigshareLink.astro";
+import MendeleyLink from "../components/MendeleyLink.astro";
+
+import epiccLogo from "../images/sottoriva/EPICC.png";
+
+const cards = {
+  epicc: {
+    title: "EPICC",
+    logo: epiccLogo,
+    alt: "EPICC logo",
+    website: "https://www.nature.com/articles/s41586-022-05311-x",
+    links: {
+      github: "https://github.com/sottorivalab/EPICC2021_data_analysis",
+      paper1: "https://www.nature.com/articles/s41586-022-05311-x",
+      paper2: "https://www.nature.com/articles/s41586-022-05202-1",
+      ega: "https://ega-archive.org/studies/EGAS00001005230",
+      mendeley:
+        "https://data.mendeley.com/v1/datasets/7wx3chtsxx/draft?a=b4295445-b3b1-459b-a0ea-a5d970c6778b",
+      figshare: "https://doi.org/10.6084/m9.figshare.c.6122193.v2",
+      figshare2: "https://doi.org/10.6084/m9.figshare.c.6011476.v1",
+    },
+  },
+};
 ---
 
 <Layout title="Sottoriva Group">
-    <HTHeader slot="header" is-web={true} client:load>
-        <a slot="logo" href="https://humantechnopole.it/en/research-groups/sottoriva-group/" target="_blank"
-            class="link">Sottoriva Group
-        </a>
-        <div slot="nav" class="header-nav">
-            <a href="/" class="link">
-                HT CBRC Groups
-            </a>
-        </div>
-    </HTHeader>
+  <HTHeader slot="header" is-web={true} client:load>
+    <a
+      slot="logo"
+      href="https://humantechnopole.it/en/research-groups/sottoriva-group/"
+      target="_blank"
+      class="link"
+      >Sottoriva Group
+    </a>
+    <div slot="nav" class="header-nav">
+      <a href="/" class="link"> HT CBRC Groups</a>
+    </div>
+  </HTHeader>
+  <h1 slot="title">Sottoriva Group</h1>
+  <h2 slot="title">Manuscripts, Apps and Tools</h2>
+  <DashboardCard
+    slot="grid"
+    title={cards.epicc.title}
+    logo={cards.epicc.logo}
+    alt={cards.epicc.alt}
+  >
+    <p class="text--sm">
+      Sottoriva and Graham lab collaboration on the mechanisms of colorectal
+      cancer growth, progression and dissemination in patients for anticipating
+      the course of the disease in large, clinically annotated cohorts.
+    </p>
+    <a
+      href={cards.epicc.website}
+      class="btn btn--primary btn--sm btn--full-width"
+      target="_blank"><span>Website</span></a
+    >
+    <GitHubLink slot="minilinks" url={cards.epicc.links.github} />
+    <PaperLink slot="minilinks" url={cards.epicc.links.paper1} />
+    <PaperLink slot="minilinks" url={cards.epicc.links.paper2} />
+    <EgaLink slot="minilinks" url={cards.epicc.links.ega} />
+    <MendeleyLink slot="minilinks" url={cards.epicc.links.mendeley} />
+    <FigshareLink slot="minilinks" url={cards.epicc.links.figshare} />
+    <FigshareLink slot="minilinks" url={cards.epicc.links.figshare2} />
+  </DashboardCard>
 </Layout>

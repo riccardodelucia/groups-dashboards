@@ -1,25 +1,171 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { HTHeader} from "@computational-biology-web-unit/ht-vue/components"
-import logo from "../assets/images/logos/iorio-logo-white.svg"
+import Layout from "../layouts/Layout.astro";
+import { HTHeader } from "@computational-biology-web-unit/ht-vue/components";
+import DashboardCard from "../components/DashboardCard.astro";
+
+import GitHubLink from "../components/GitHubLink.astro";
+import PaperLink from "../components/PaperLink.astro";
+import ColabLink from "../components/ColabLink.astro";
+import ShinyLink from "../components/ShinyLink.astro";
+
+import logo from "../images/iorio/iorio-logo-white.svg";
+
+import ccrLogo from "../images/iorio/crisprcleanr.svg";
+import coreLogo from "../images/iorio/core.png";
+import cellectorLogo from "../images/iorio/cellector.png";
+import mintesLogo from "../images/iorio/mintes.png";
+import ht29Logo from "../images/iorio/HT-29.png";
+
+const cards = {
+  crisprcleanr: {
+    title: "CRISPRcleanR",
+    logo: ccrLogo,
+    alt: "CRISPRcleanR logo",
+    app: "https://crisprcleanr-webapp.fht.org",
+    links: {
+      github: "https://github.com/francescojm/CRISPRcleanR",
+      paper1:
+        "https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-018-4989-y",
+      paper2:
+        "https://www.sciencedirect.com/science/article/pii/S2667237522002752",
+    },
+  },
+  core: {
+    title: "coRe",
+    logo: coreLogo,
+    alt: "coRe logo",
+    links: {
+      github: "https://github.com/DepMap-Analytics/CoRe",
+      colab:
+        "https://colab.research.google.com/github/DepMap-Analytics/CoRe/blob/master/notebooks/CoRe_Benchmarking.ipynb",
+      paper:
+        "https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-021-08129-5",
+    },
+  },
+  cellector: {
+    title: "CELLector",
+    logo: cellectorLogo,
+    alt: "CELLector logo",
+    links: {
+      github: "https://github.com/francescojm/CELLector",
+      shiny: "https://ot-cellector.shinyapps.io/CELLector_App/",
+      paper: "https://www.cell.com/cell-systems/fulltext/S2405-4712(20)30150-2",
+    },
+  },
+  mintes: {
+    title: "MinTEs",
+    logo: mintesLogo,
+    alt: "MinTEs logo",
+    links: {
+      paper:
+        "https://www.cell.com/cell-reports/fulltext/S2211-1247(22)00954-8?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2211124722009548%3Fshowall%3Dtrue",
+      colab:
+        "https://colab.research.google.com/github/AleVin1995/MinTEs/blob/master/notebooks/Summary_Colab.ipynb",
+    },
+  },
+  ht29: {
+    title: "HT-29 Benchmark",
+    logo: ht29Logo,
+    alt: "HT-29 Benchmark logo",
+    links: {
+      github: "https://github.com/DepMap-Analytics/HT29benchmark",
+      paper:
+        "https://www.biorxiv.org/content/10.1101/2022.09.23.509258v1.full.pdf",
+    },
+  },
+};
 ---
 
 <Layout title="Iorio Group">
-    <HTHeader slot="header" is-web={true} client:load>
-        <a
-        slot="logo"
-        href="https://humantechnopole.it/en/research-groups/iorio-group/"
-        target="_blank"
-        class="header__logo-link"
-        ><img
-          src={logo}
-          alt="Iorio logo"
-          class="header__logo logo-iorio" />
-        </a>
-        <div slot="nav" class="header-nav">
-            <a href="/" class="link">
-                HT CBRC Groups
-            </a>
-        </div>
-    </HTHeader>
+  <HTHeader slot="header" is-web={true} client:load>
+    <a
+      slot="logo"
+      href="https://humantechnopole.it/en/research-groups/iorio-group/"
+      target="_blank"
+      class="header__logo-link"
+      ><img src={logo} alt="Iorio logo" class="header__logo logo-iorio" />
+    </a>
+    <div slot="nav" class="header-nav">
+      <a href="/" class="link"> HT CBRC Groups</a>
+    </div>
+  </HTHeader>
+
+  <h1 slot="title">Iorio Lab</h1>
+  <h2 slot="title" class="margin-bottom">
+    Apps, Tools and Computable Manuscripts
+  </h2>
+
+  <DashboardCard
+    slot="grid"
+    title={cards.crisprcleanr.title}
+    logo={cards.crisprcleanr.logo}
+    alt={cards.crisprcleanr.alt}
+  >
+    <p class="text--sm">
+      Pre-processing of CRISPR-KO screening data and correction of gene
+      independent responses to CRISPR-Cas9 targeting.
+    </p>
+    <a
+      href={cards.crisprcleanr.app}
+      class="btn btn--primary btn--sm btn--full-width"
+      target="_blank"><span>Web App</span></a
+    >
+    <GitHubLink slot="minilinks" url={cards.crisprcleanr.links.github} />
+    <PaperLink slot="minilinks" url={cards.crisprcleanr.links.paper1} />
+    <PaperLink slot="minilinks" url={cards.crisprcleanr.links.paper2} />
+  </DashboardCard>
+  <DashboardCard
+    slot="grid"
+    title={cards.core.title}
+    logo={cards.core.logo}
+    alt={cards.core.alt}
+  >
+    <p class="text--sm">
+      Identification of core fitness genes from joint analyses of multiple
+      genome-wide CRISPR-Cas9 screens.
+    </p>
+    <GitHubLink slot="minilinks" url={cards.core.links.github} />
+    <ColabLink slot="minilinks" url={cards.core.links.colab} />
+    <PaperLink slot="minilinks" url={cards.core.links.paper} />
+  </DashboardCard>
+  <DashboardCard
+    slot="grid"
+    title={cards.cellector.title}
+    logo={cards.cellector.logo}
+    alt={cards.cellector.alt}
+  >
+    <p class="text--sm">
+      Patient-genomics-guided selection of cancer in vitro models allowing
+      in-silico drug/target prescriptions.
+    </p>
+    <GitHubLink slot="minilinks" url={cards.cellector.links.github} />
+    <ShinyLink slot="minilinks" url={cards.cellector.links.shiny} />
+    <PaperLink slot="minilinks" url={cards.cellector.links.paper} />
+  </DashboardCard>
+  <DashboardCard
+    slot="grid"
+    title={cards.mintes.title}
+    logo={cards.mintes.logo}
+    alt={cards.mintes.alt}
+  >
+    <p class="text--sm">
+      Patient-genomics-guided selection of cancer in vitro models allowing
+      in-silico drug/target prescriptions.
+    </p>
+    <ColabLink slot="minilinks" url={cards.mintes.links.colab} />
+    <PaperLink slot="minilinks" url={cards.mintes.links.paper} />
+  </DashboardCard>
+  <DashboardCard
+    slot="grid"
+    title={cards.ht29.title}
+    logo={cards.ht29.logo}
+    alt={cards.ht29.alt}
+  >
+    <p class="text--sm">
+      Benchmarking pipeline and R package for evaluating CRISPR screens data
+      quality.
+    </p>
+    <GitHubLink slot="minilinks" url={cards.ht29.links.github} />
+    <PaperLink slot="minilinks" url={cards.ht29.links.paper} />
+  </DashboardCard>
 </Layout>

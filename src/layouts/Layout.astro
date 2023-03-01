@@ -1,25 +1,45 @@
 ---
-import '@computational-biology-web-unit/ht-design/style.css';
-import {HTFooter} from "@computational-biology-web-unit/ht-vue/components"
+import "@computational-biology-web-unit/ht-design/style.css";
+import { HTFooter } from "@computational-biology-web-unit/ht-vue/components";
 
 const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot name="header"></slot>
-
-		<div class="web-container">
-			<slot name="default"></slot>
-		</div>
-		<HTFooter></HTFooter>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot name="header" />
+    <div class="web-container">
+      <div class="center"><slot name="title" /></div>
+      <div class="container-grid">
+        <slot name="grid" />
+      </div>
+      <div class="margin-top--lg margin-bottom--lg">
+        <slot name="below" />
+      </div>
+    </div>
+    <HTFooter />
+  </body>
 </html>
+
+<style lang="scss">
+  .container-grid {
+    display: grid;
+    grid-column-gap: var(--space-md);
+    grid-row-gap: var(--space-lg);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    justify-items: center;
+  }
+  .center {
+    text-align: center;
+  }
+</style>

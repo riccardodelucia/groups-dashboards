@@ -1,0 +1,46 @@
+---
+/**
+ * NOTES: Astro doesn't allow to programmatically choose components/ tags from within js (es: in map functions). Therefore, there is no way to compute
+ * minilinks here based on a suitable props. Minilinks should be setup as slot elements from the parent component.
+ */
+const { title, logo, alt } = Astro.props;
+---
+
+<div class="card dashboard-card">
+  <img class="dashboard-card__logo" src={logo} alt={alt} />
+  <h4>{title}</h4>
+  <slot />
+  <div class="dashboard-card__minilinks">
+    <slot name="minilinks" />
+  </div>
+</div>
+
+<style lang="scss">
+  .dashboard-card {
+    width: 30rem;
+    min-height: 28rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+
+    &__logo {
+      height: 6rem;
+    }
+
+    transition: transform 0.1s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &__minilinks {
+      margin-top: auto;
+      display: flex;
+      gap: var(--space-xs);
+      align-items: center;
+      justify-content: center;
+    }
+  }
+</style>

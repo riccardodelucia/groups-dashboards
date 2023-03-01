@@ -1,18 +1,28 @@
 ---
 const {group} = Astro.props;
-const {src, name, center} = group;
+const {src, alt, name, center, slug} = group;
 ---
 
-<div class="card card-image">
-    <div class="image-container">
-        <img class="" src={src} alt="iorio group">
+<a class="card-link"  href={slug}>
+    <div class="card group-card">
+        <div class="image-container">
+            <img class="" src={src} alt={alt}>
+        </div>
+        <div>
+            <h4>{name}</h4>
+            <p class="text--sm"> {center}</p>
+        </div>
     </div>
-    <div><h4>{name}</h4>
-        <p class="text--sm"> {center}</p>
-    </div>
-</div>
+</a>
+
 
 <style lang="scss">
+
+    .card-link{
+        text-decoration: none;
+	    color: inherit;
+    }
+
     .image-container {
         width: 100%;
         height: 30rem;
@@ -26,15 +36,12 @@ const {src, name, center} = group;
         }
     }
 
-    .card-image{
+    .group-card{
         width: 30rem;
         height:100%;
 
-        justify-self: center;
-
         padding: 0;
         text-align: center;
-
 
         transition: transform 0.1s;
 
