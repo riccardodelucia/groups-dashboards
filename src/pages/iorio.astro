@@ -15,6 +15,7 @@ import coreLogo from "../images/iorio/core.png";
 import cellectorLogo from "../images/iorio/cellector.png";
 import mintesLogo from "../images/iorio/mintes.png";
 import ht29Logo from "../images/iorio/HT-29.png";
+import cestaLogo from "../images/iorio/cesta.png";
 
 const cards = {
   crisprcleanr: {
@@ -71,6 +72,17 @@ const cards = {
       github: "https://github.com/DepMap-Analytics/HT29benchmark",
       paper:
         "https://www.biorxiv.org/content/10.1101/2022.09.23.509258v1.full.pdf",
+    },
+  },
+  cesta: {
+    title: "CeSta",
+    logo: cestaLogo,
+    alt: "CeSta logo",
+    links: {
+      github1: "https://bitbucket.org/uperron/cesta_pdx/src/master/",
+      github2: "https://bitbucket.org/uperron/ircc-pdx_exploration/src/master/",
+      paper:
+        "https://statics.teams.cdn.office.net/evergreen-assets/safelinks/1/atp-safelinks.html",
     },
   },
 };
@@ -167,5 +179,19 @@ const cards = {
     </p>
     <GitHubLink slot="minilinks" url={cards.ht29.links.github} />
     <PaperLink slot="minilinks" url={cards.ht29.links.paper} />
+  </DashboardCard>
+  <DashboardCard
+    slot="grid"
+    title={cards.cesta.title}
+    logo={cards.cesta.logo}
+    alt={cards.cesta.alt}
+  >
+    <p class="text--sm">
+      Integrative ensemble predictor of cetuximab sensitivity in colorectal
+      cancer PDXs from their basal multi-omic characterisation
+    </p>
+    <GitHubLink slot="minilinks" url={cards.cesta.links.github1} />
+    <GitHubLink slot="minilinks" url={cards.cesta.links.github2} />
+    <PaperLink slot="minilinks" url={cards.cesta.links.paper} />
   </DashboardCard>
 </Layout>
