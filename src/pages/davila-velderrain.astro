@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { HTHeader } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+import DashboardHeader from "../components/DashboardHeader.astro";
 import DashboardCard from "../components/DashboardCard.astro";
 
-import GitHubLink from "../components/GitHubLink.astro";
+import MiniLink from "../components/MiniLink.astro";
 
 import actionetLogo from "../images/davila/actionet.png";
 
@@ -21,7 +21,7 @@ const cards = {
 ---
 
 <Layout title="Davila-Velderrain Group">
-  <HTHeader slot="header" is-web={true} client:load>
+  <DashboardHeader slot="header">
     <a
       slot="logo"
       href="https://humantechnopole.it/en/research-groups/davila-velderrain-group/"
@@ -29,10 +29,7 @@ const cards = {
       class="link"
       >Davila-Velderrain Group
     </a>
-    <div slot="nav" class="header-nav">
-      <a href="/" class="link"> HT CBRC Groups</a>
-    </div>
-  </HTHeader>
+  </DashboardHeader>
   <h1 slot="title">Davila-Velderrain Group</h1>
   <h2 slot="title">Manuscripts, Apps and Tools</h2>
   <DashboardCard
@@ -51,6 +48,10 @@ const cards = {
       class="btn btn--primary btn--sm btn--full-width"
       target="_blank"><span>Website</span></a
     >
-    <GitHubLink slot="minilinks" url={cards.actionet.links.github} />
+    <MiniLink
+      slot="minilinks"
+      url={cards.actionet.links.github}
+      type="github"
+    />
   </DashboardCard>
 </Layout>

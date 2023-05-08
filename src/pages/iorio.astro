@@ -1,12 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { HTHeader } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+import DashboardHeader from "../components/DashboardHeader.astro";
 import DashboardCard from "../components/DashboardCard.astro";
-
-import GitHubLink from "../components/GitHubLink.astro";
-import PaperLink from "../components/PaperLink.astro";
-import ColabLink from "../components/ColabLink.astro";
-import ShinyLink from "../components/ShinyLink.astro";
+import MiniLink from "../components/MiniLink.astro";
 
 import logo from "../images/iorio/iorio-logo-white.svg";
 
@@ -89,7 +85,7 @@ const cards = {
 ---
 
 <Layout title="Iorio Group">
-  <HTHeader slot="header" is-web={true} client:load>
+  <DashboardHeader slot="header">
     <a
       slot="logo"
       href="https://humantechnopole.it/en/research-groups/iorio-group/"
@@ -97,10 +93,7 @@ const cards = {
       class="header__logo-link"
       ><img src={logo} alt="Iorio logo" class="header__logo logo-iorio" />
     </a>
-    <div slot="nav" class="header-nav">
-      <a href="/" class="link"> HT CBRC Groups</a>
-    </div>
-  </HTHeader>
+  </DashboardHeader>
 
   <h1 slot="title">Iorio Lab</h1>
   <h2 slot="title" class="margin-bottom">
@@ -122,9 +115,21 @@ const cards = {
       class="btn btn--primary btn--sm btn--full-width"
       target="_blank"><span>Web App</span></a
     >
-    <GitHubLink slot="minilinks" url={cards.crisprcleanr.links.github} />
-    <PaperLink slot="minilinks" url={cards.crisprcleanr.links.paper1} />
-    <PaperLink slot="minilinks" url={cards.crisprcleanr.links.paper2} />
+    <MiniLink
+      slot="minilinks"
+      url={cards.crisprcleanr.links.github}
+      type="github"
+    />
+    <MiniLink
+      slot="minilinks"
+      url={cards.crisprcleanr.links.paper1}
+      type="paper"
+    />
+    <MiniLink
+      slot="minilinks"
+      url={cards.crisprcleanr.links.paper2}
+      type="paper"
+    />
   </DashboardCard>
   <DashboardCard
     slot="grid"
@@ -136,9 +141,9 @@ const cards = {
       Identification of core fitness genes from joint analyses of multiple
       genome-wide CRISPR-Cas9 screens.
     </p>
-    <GitHubLink slot="minilinks" url={cards.core.links.github} />
-    <ColabLink slot="minilinks" url={cards.core.links.colab} />
-    <PaperLink slot="minilinks" url={cards.core.links.paper} />
+    <MiniLink slot="minilinks" url={cards.core.links.github} type="github" />
+    <MiniLink slot="minilinks" url={cards.core.links.colab} type="colab" />
+    <MiniLink slot="minilinks" url={cards.core.links.paper} type="paper" />
   </DashboardCard>
   <DashboardCard
     slot="grid"
@@ -150,9 +155,13 @@ const cards = {
       Patient-genomics-guided selection of cancer in vitro models allowing
       in-silico drug/target prescriptions.
     </p>
-    <GitHubLink slot="minilinks" url={cards.cellector.links.github} />
-    <ShinyLink slot="minilinks" url={cards.cellector.links.shiny} />
-    <PaperLink slot="minilinks" url={cards.cellector.links.paper} />
+    <MiniLink
+      slot="minilinks"
+      url={cards.cellector.links.github}
+      type="github"
+    />
+    <MiniLink slot="minilinks" url={cards.cellector.links.shiny} type="shiny" />
+    <MiniLink slot="minilinks" url={cards.cellector.links.paper} type="paper" />
   </DashboardCard>
   <DashboardCard
     slot="grid"
@@ -164,9 +173,9 @@ const cards = {
       Reduced gene templates for supervised analysis of scale-limited
       CRISPR-Cas9 fitness screens
     </p>
-    <GitHubLink slot="minilinks" url={cards.mintes.links.github} />
-    <ColabLink slot="minilinks" url={cards.mintes.links.colab} />
-    <PaperLink slot="minilinks" url={cards.mintes.links.paper} />
+    <MiniLink slot="minilinks" url={cards.mintes.links.github} type="github" />
+    <MiniLink slot="minilinks" url={cards.mintes.links.colab} type="colab" />
+    <MiniLink slot="minilinks" url={cards.mintes.links.paper} type="paper" />
   </DashboardCard>
   <DashboardCard
     slot="grid"
@@ -178,8 +187,8 @@ const cards = {
       Benchmarking pipeline and R package for evaluating CRISPR screens data
       quality.
     </p>
-    <GitHubLink slot="minilinks" url={cards.ht29.links.github} />
-    <PaperLink slot="minilinks" url={cards.ht29.links.paper} />
+    <MiniLink slot="minilinks" url={cards.ht29.links.github} type="github" />
+    <MiniLink slot="minilinks" url={cards.ht29.links.paper} type="paper" />
   </DashboardCard>
   <DashboardCard
     slot="grid"
@@ -191,8 +200,8 @@ const cards = {
       Integrative ensemble predictor of cetuximab sensitivity in colorectal
       cancer PDXs from their basal multi-omic characterisation
     </p>
-    <GitHubLink slot="minilinks" url={cards.cesta.links.github1} />
-    <GitHubLink slot="minilinks" url={cards.cesta.links.github2} />
-    <PaperLink slot="minilinks" url={cards.cesta.links.paper} />
+    <MiniLink slot="minilinks" url={cards.cesta.links.github1} type="github" />
+    <MiniLink slot="minilinks" url={cards.cesta.links.github2} type="github" />
+    <MiniLink slot="minilinks" url={cards.cesta.links.paper} type="paper" />
   </DashboardCard>
 </Layout>

@@ -1,0 +1,10 @@
+---
+import { HTHeader } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+---
+
+<HTHeader is-web={true} client:load>
+  <slot name="logo" slot="logo" />
+  <div slot="nav" class="header-nav">
+    <a href="/" class="link"> HT Groups</a>
+  </div>
+</HTHeader>

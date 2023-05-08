@@ -1,11 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { HTHeader } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+import DashboardHeader from "../components/DashboardHeader.astro";
 import DashboardCard from "../components/DashboardCard.astro";
 ---
 
 <Layout title="Jug Group">
-  <HTHeader slot="header" is-web={true} client:load>
+  <DashboardHeader slot="header">
     <a
       slot="logo"
       href="https://humantechnopole.it/en/research-groups/jug-group/"
@@ -13,10 +13,7 @@ import DashboardCard from "../components/DashboardCard.astro";
       class="link"
       >Jug Group
     </a>
-    <div slot="nav" class="header-nav">
-      <a href="/" class="link"> HT CBRC Groups</a>
-    </div>
-  </HTHeader>
+  </DashboardHeader>
   <h1 slot="title">Jug Group</h1>
   <p slot="title">Coming soon...</p>
 </Layout>

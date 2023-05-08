@@ -1,0 +1,62 @@
+---
+import logoColab from "../images/minilinks/colab.svg";
+import logoEga from "../images/minilinks/ega.png";
+import logoFigshare from "../images/minilinks/figshare.png";
+import logoGithub from "../images/minilinks/github.png";
+import logoMendeley from "../images/minilinks/mendeley.png";
+import logoPaper from "../images/minilinks/paper.png";
+import logoShiny from "../images/minilinks/shiny.png";
+
+const links = {
+  colab: { logo: logoColab, alt: "Colab logo", class: "logo--colab" },
+  ega: { logo: logoEga, alt: "Ega logo", class: "logo--ega" },
+  figshare: {
+    logo: logoFigshare,
+    alt: "Figshare logo",
+    class: "logo--figshare",
+  },
+  github: { logo: logoGithub, alt: "Github logo", class: "logo--github" },
+  mendeley: {
+    logo: logoMendeley,
+    alt: "Mendeley logo",
+    class: "logo--mendeley",
+  },
+  paper: { logo: logoPaper, alt: "Paperlink logo", class: "logo--paper" },
+  shiny: { logo: logoShiny, alt: "Shiny logo", class: "logo--shiny" },
+};
+
+const { url, type } = Astro.props;
+console.log(links[type]);
+---
+
+<a href={url} target="_blank">
+  <img class={links[type].class} src={links[type].logo} alt={links[type].alt} />
+</a>
+
+<style lang="scss">
+  .logo--colab {
+    width: 4rem;
+  }
+  .logo--ega {
+    width: 2rem;
+    height: 2rem;
+  }
+  .logo--figshare {
+    width: 2rem;
+    height: 2rem;
+  }
+  .logo--github {
+    width: 2rem;
+    height: 2rem;
+  }
+  .logo--mendeley {
+    width: 2rem;
+    height: 2rem;
+  }
+  .logo--paper {
+    width: 3rem;
+  }
+  .logo--shiny {
+    width: 2.5rem;
+  }
+</style>

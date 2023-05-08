@@ -36,13 +36,13 @@ lint-dockerfile:
 # branch pipeline: build, package and test image on the master branch
 
 .install packages:
-    variables:
-      PACKAGE_REGISTRY_PROJECT_ID: 194 # because before_script doesn't have access to CICD custom variables
-    before_script:
-      - echo $PACKAGE_REGISTRY_PROJECT_ID
-      - npm config set -- //${CI_SERVER_HOST}/api/v4/projects/${PACKAGE_REGISTRY_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}
-      - npm config set @${CI_PROJECT_NAMESPACE}:registry=https://${CI_SERVER_HOST}/api/v4/projects/${PACKAGE_REGISTRY_PROJECT_ID}/packages/npm/
-      - npm install
+  variables:
+    PACKAGE_REGISTRY_PROJECT_ID: 194 # because before_script doesn't have access to CICD custom variables
+  before_script:
+    - echo $PACKAGE_REGISTRY_PROJECT_ID
+    - npm config set -- //${CI_SERVER_HOST}/api/v4/projects/${PACKAGE_REGISTRY_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}
+    - npm config set @${CI_PROJECT_NAMESPACE}:registry=https://${CI_SERVER_HOST}/api/v4/projects/${PACKAGE_REGISTRY_PROJECT_ID}/packages/npm/
+    - npm install
 
 .master branch:
   rules:
@@ -92,7 +92,6 @@ test docker image:
   script:
     - curl http://website/build.html | grep $BUILD
 
-
 ####################################################################################################
 # branch pipeline: deploy to environment
 .deploy to environment:
@@ -110,7 +109,7 @@ test docker image:
     - apt-get install -y gettext
   variables:
     ENV_FILE: deploy.env
-    TAG: $BUILD
+    TAG: latest
   script:
     - envsubst < deploy/deploy.sh > deploy.sh
     - envsubst < deploy/docker-compose.deploy.yml > docker-compose.deploy.yml

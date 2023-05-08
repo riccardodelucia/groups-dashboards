@@ -1,52 +1,49 @@
 ---
-const {group} = Astro.props;
-const {src, alt, name, center, slug} = group;
+const { group } = Astro.props;
+const { src, alt, name, center, slug } = group;
 ---
 
-<a class="card-link"  href={slug}>
-    <div class="card group-card">
-        <div class="image-container">
-            <img class="" src={src} alt={alt}>
-        </div>
-        <div>
-            <h4>{name}</h4>
-            <p class="text--sm"> {center}</p>
-        </div>
+<a class="card-link" href={slug}>
+  <div class="card group-card">
+    <div class="image-container">
+      <img class="" src={src} alt={alt} />
     </div>
+    <div>
+      <h4>{name}</h4>
+      <p class="text--sm">{center}</p>
+    </div>
+  </div>
 </a>
 
-
 <style lang="scss">
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+  }
 
-    .card-link{
-        text-decoration: none;
-	    color: inherit;
+  .image-container {
+    width: 100%;
+    height: 30rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      filter: grayscale(1);
+      object-fit: cover;
     }
+  }
 
-    .image-container {
-        width: 100%;
-        height: 30rem;
+  .group-card {
+    width: 30rem;
+    height: 100%;
 
-        img {
-            width: 100%;
-            height: 100%;
-            filter: grayscale(1);
-            object-fit: cover;
+    padding: 0;
+    text-align: center;
 
-        }
+    transition: transform 0.1s;
+
+    &:hover {
+      transform: scale(1.05);
     }
-
-    .group-card{
-        width: 30rem;
-        height:100%;
-
-        padding: 0;
-        text-align: center;
-
-        transition: transform 0.1s;
-
-        &:hover {
-            transform: scale(1.05);
-        }
-    }
+  }
 </style>

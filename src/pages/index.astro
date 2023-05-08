@@ -13,27 +13,27 @@ import pinheiroImg from "../images/pinheiro/pinheiro-300x225.jpeg";
 import sottorivaImg from "../images/sottoriva/sottoriva-300x300.jpeg";
 
 const groups = [
-  {
+  /* {
     slug: "/calviello",
     src: calvielloImg,
     alt: "Calviello img",
     name: "Calviello Group",
-    center: "Computational Biology",
-  },
+    center: "Genomics/ Computational Biology",
+  }, */
   {
     slug: "/davila-velderrain",
     src: davilaImg,
     alt: "Davila-Velderrain img",
     name: "Davila-Velderrain Group",
-    center: "Computational Biology",
+    center: "Neurogenomics/ Computational Biology",
   },
-  {
+  /* {
     slug: "/glastonbury",
     src: glastonburyImg,
     alt: "Glastonbury img",
     name: "Glastonbury Group",
-    center: "Computational Biology",
-  },
+    center: "Genomics/ Computational Biology",
+  }, */
   {
     slug: "/iorio",
     src: iorioImg,
@@ -41,20 +41,20 @@ const groups = [
     name: "Iorio Group",
     center: "Computational Biology",
   },
-  {
+  /* {
     slug: "/jug",
     src: jugImg,
     alt: "Jug img",
     name: "Jug Group",
     center: "Computational Biology",
-  },
-  {
+  }, */
+  /* {
     slug: "/pinheiro",
     src: pinheiroImg,
     alt: "Pinheiro img",
     name: "Pinheiro Group",
     center: "Computational Biology",
-  },
+  }, */
   {
     slug: "/sottoriva",
     src: sottorivaImg,
@@ -67,15 +67,8 @@ const groups = [
 
 <Layout title="Groups Dashboards">
   <HTHeader slot="header" is-web={true} client:load />
-  <h1 slot="title" class="center">HT CBRC Groups' Dashboards</h1>
+  <h1 slot="title" class="center">HT Groups</h1>
   {groups.map((group) => <GroupCard slot="grid" group={group} />)}
-  <a
-    slot="below"
-    class="groups-link"
-    href="https://humantechnopole.it/en/research-centres/computational-biology/"
-  >
-    HT Computational Biology Research Center Official Page</a
-  >
 </Layout>
 
 <style lang="scss">

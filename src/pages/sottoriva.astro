@@ -1,13 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { HTHeader } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+import DashboardHeader from "../components/DashboardHeader.astro";
 import DashboardCard from "../components/DashboardCard.astro";
 
-import GitHubLink from "../components/GitHubLink.astro";
-import PaperLink from "../components/PaperLink.astro";
-import EgaLink from "../components/EgaLink.astro";
-import FigshareLink from "../components/FigshareLink.astro";
-import MendeleyLink from "../components/MendeleyLink.astro";
+import MiniLink from "../components/MiniLink.astro";
 
 import epiccLogo from "../images/sottoriva/EPICC.png";
 
@@ -32,7 +28,7 @@ const cards = {
 ---
 
 <Layout title="Sottoriva Group">
-  <HTHeader slot="header" is-web={true} client:load>
+  <DashboardHeader slot="header">
     <a
       slot="logo"
       href="https://humantechnopole.it/en/research-groups/sottoriva-group/"
@@ -40,10 +36,7 @@ const cards = {
       class="link"
       >Sottoriva Group
     </a>
-    <div slot="nav" class="header-nav">
-      <a href="/" class="link"> HT CBRC Groups</a>
-    </div>
-  </HTHeader>
+  </DashboardHeader>
   <h1 slot="title">Sottoriva Group</h1>
   <h2 slot="title">Manuscripts, Apps and Tools</h2>
   <DashboardCard
@@ -62,12 +55,24 @@ const cards = {
       class="btn btn--primary btn--sm btn--full-width"
       target="_blank"><span>Website</span></a
     >
-    <GitHubLink slot="minilinks" url={cards.epicc.links.github} />
-    <PaperLink slot="minilinks" url={cards.epicc.links.paper1} />
-    <PaperLink slot="minilinks" url={cards.epicc.links.paper2} />
-    <EgaLink slot="minilinks" url={cards.epicc.links.ega} />
-    <MendeleyLink slot="minilinks" url={cards.epicc.links.mendeley} />
-    <FigshareLink slot="minilinks" url={cards.epicc.links.figshare} />
-    <FigshareLink slot="minilinks" url={cards.epicc.links.figshare2} />
+    <MiniLink slot="minilinks" url={cards.epicc.links.github} type="github" />
+    <MiniLink slot="minilinks" url={cards.epicc.links.paper1} type="paper" />
+    <MiniLink slot="minilinks" url={cards.epicc.links.paper2} type="paper" />
+    <MiniLink slot="minilinks" url={cards.epicc.links.ega} type="ega" />
+    <MiniLink
+      slot="minilinks"
+      url={cards.epicc.links.mendeley}
+      type="mendeley"
+    />
+    <MiniLink
+      slot="minilinks"
+      url={cards.epicc.links.figshare}
+      type="figshare"
+    />
+    <MiniLink
+      slot="minilinks"
+      url={cards.epicc.links.figshare2}
+      type="figshare"
+    />
   </DashboardCard>
 </Layout>
