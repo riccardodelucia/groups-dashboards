@@ -1,16 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { HTHeader } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+import { HTHeaderWeb } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+
+import { HTThemeSwitcher } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
 
 import GroupCard from "../components/GroupCard.astro";
 
-import calvielloImg from "../images/calviello/calviello-300x300.jpeg";
-import davilaImg from "../images/davila/davila-300x300.jpeg";
-import glastonburyImg from "../images/glastonbury/glastonbury-300x300.jpeg";
-import iorioImg from "../images/iorio/iorio-300x300.jpeg";
-import jugImg from "../images/jug/jug-300x370.jpeg";
-import pinheiroImg from "../images/pinheiro/pinheiro-300x225.jpeg";
-import sottorivaImg from "../images/sottoriva/sottoriva-300x300.jpeg";
+import calvielloImg from "../images/group-leaders/calviello-300x300.jpeg";
+import davilaImg from "../images/group-leaders//davila-300x300.jpeg";
+import glastonburyImg from "../images/group-leaders//glastonbury-300x300.jpeg";
+import iorioImg from "../images/group-leaders//iorio-300x300.jpeg";
+import jugImg from "../images/group-leaders//jug-300x370.jpeg";
+import pinheiroImg from "../images/group-leaders//pinheiro-300x225.jpeg";
+import sottorivaImg from "../images/group-leaders//sottoriva-300x300.jpeg";
 
 const groups = [
   /* {
@@ -65,16 +67,23 @@ const groups = [
 ];
 ---
 
-<Layout title="Groups Dashboards">
-  <HTHeader slot="header" is-web={true} client:load />
-  <h1 slot="title" class="center">HT Groups</h1>
-  {groups.map((group) => <GroupCard slot="grid" group={group} />)}
-</Layout>
+<style>
+  .header-content {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    padding-block: var(--size-3);
 
-<style lang="scss">
-  .groups-link {
-    display: block;
-    margin: auto;
-    text-align: center;
+    @media (min-width: 50em) {
+      justify-content: flex-end;
+    }
   }
 </style>
+
+<Layout heading="HT Groups">
+  <HTHeaderWeb slot="header" client:only>
+    <div class="header-content"><HTThemeSwitcher client:only /></div>
+  </HTHeaderWeb>
+  <h2 class="title" slot="heading">HT Groups</h2>
+  {groups.map((group) => <GroupCard group={group} />)}
+</Layout>

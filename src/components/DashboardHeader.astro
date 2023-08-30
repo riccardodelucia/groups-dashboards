@@ -1,10 +1,35 @@
 ---
-import { HTHeader } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+import { HTHeaderWeb } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+
+import { HTThemeSwitcher } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+const { url, label } = Astro.props;
 ---
 
-<HTHeader is-web={true} client:load>
-  <slot name="logo" slot="logo" />
-  <div slot="nav" class="header-nav">
-    <a href="/" class="link"> HT Groups</a>
-  </div>
-</HTHeader>
+<style>
+  nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-block: var(--size-3);
+
+    @media (min-width: 50em) {
+      flex-direction: row;
+      justify-content: flex-end;
+
+      & > *:nth-child(2) {
+        margin-left: auto;
+      }
+    }
+  }
+</style>
+
+<HTHeaderWeb client:only>
+  <nav>
+    <a href={url} class="ht-reset" target="_blank">{label}</a>
+    <a href="/" class="ht-reset">HT Groups</a>
+    <HTThemeSwitcher client:only />
+  </nav>
+</HTHeaderWeb>

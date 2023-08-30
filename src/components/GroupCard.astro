@@ -3,47 +3,44 @@ const { group } = Astro.props;
 const { src, alt, name, center, slug } = group;
 ---
 
-<a class="card-link" href={slug}>
-  <div class="card group-card">
-    <div class="image-container">
-      <img class="" src={src} alt={alt} />
-    </div>
-    <div>
-      <h4>{name}</h4>
-      <p class="text--sm">{center}</p>
-    </div>
-  </div>
-</a>
+<article class="ht-card">
+  <a class="ht-reset" href={slug}
+    ><img src={src} alt={alt} />
+    <div class="ht-container">
+      <h2>{name}</h2>
+      <small>{center}</small>
+    </div></a
+  >
+</article>
 
 <style lang="scss">
-  .card-link {
-    text-decoration: none;
-    color: inherit;
+  .ht-card {
+    overflow: hidden;
   }
 
-  .image-container {
-    width: 100%;
-    height: 30rem;
-
-    img {
-      width: 100%;
-      height: 100%;
-      filter: grayscale(1);
-      object-fit: cover;
-    }
+  .ht-container {
+    --padding-block: 1em;
+    --padding-inline: 1em;
   }
 
-  .group-card {
-    width: 30rem;
-    height: 100%;
-
+  article {
+    width: 20rem;
     padding: 0;
     text-align: center;
 
     transition: transform 0.1s;
 
+    box-shadow: var(--shadow-3);
+
     &:hover {
       transform: scale(1.05);
+    }
+
+    img {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+      filter: grayscale(1);
     }
   }
 </style>

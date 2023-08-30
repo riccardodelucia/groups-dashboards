@@ -1,45 +1,57 @@
 ---
 import "@computational-biology-sw-web-dev-unit/ht-design/style.css";
+import "@computational-biology-sw-web-dev-unit/ht-vue/style.css";
+
 import { HTFooter } from "@computational-biology-sw-web-dev-unit/ht-vue/components";
 
-const { title } = Astro.props;
+import Heading from "../components/Heading.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <slot name="header" />
-    <div class="web-container">
-      <div class="center margin-top--xl"><slot name="title" /></div>
-      <div class="container-grid">
-        <slot name="grid" />
-      </div>
-      <div class="margin-top--lg margin-bottom--lg">
-        <slot name="below" />
-      </div>
-    </div>
-    <HTFooter />
-  </body>
-</html>
-
-<style lang="scss">
-  .container-grid {
+<style>
+  .container {
     display: grid;
-    grid-column-gap: var(--space-md);
-    grid-row-gap: var(--space-lg);
-    margin-top: var(--space-md);
-    margin-bottom: var(--space-md);
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    justify-items: center;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
   }
-  .center {
+
+  main {
+    justify-items: center;
+    padding-block: 2rem;
+  }
+
+  .cards-grid {
+    --grid-gap: 4rem;
+    --grid-min-item-size: 20rem;
+    justify-items: center;
+    margin-top: var(--size-7);
+  }
+
+  :global(h2.title, h3.title) {
     text-align: center;
+    color: var(--ht-text-color-2);
+    line-height: var(--font-lineheight-1);
+  }
+  :global(h2.title) {
+    font-size: var(--font-size-8);
+    line-height: var(--font-lineheight-1);
+  }
+  :global(h3.title) {
+    font-size: var(--font-size-5);
   }
 </style>
+
+<html lang="en">
+  <head>
+    <Heading title="Groups Dashboards" />
+  </head>
+  <body>
+    <div class="container">
+      <slot name="header" />
+      <main class="ht-wrapper">
+        <div class="ht-layout-stack"><slot name="heading" /></div>
+        <section class="ht-grid-auto cards-grid"><slot /></section>
+      </main>
+      <HTFooter />
+    </div>
+  </body>
+</html>

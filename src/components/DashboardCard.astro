@@ -1,46 +1,44 @@
 ---
-/**
- * NOTES: Astro doesn't allow to programmatically choose components/ tags from within js (es: in map functions). Therefore, there is no way to compute
- * minilinks here based on a suitable props. Minilinks should be setup as slot elements from the parent component.
- */
-const { title, logo, alt } = Astro.props;
+import MiniLink from "./MiniLink.astro";
+const { miniLinks, logo } = Astro.props;
 ---
 
-<div class="card dashboard-card">
-  <img class="dashboard-card__logo" src={logo} alt={alt} />
-  <h4>{title}</h4>
-  <slot />
-  <div class="dashboard-card__minilinks">
-    <slot name="minilinks" />
-  </div>
-</div>
-
-<style lang="scss">
+<style>
   .dashboard-card {
-    width: 30rem;
-    min-height: 28rem;
+    width: 20rem;
+
     text-align: center;
     display: flex;
     flex-direction: column;
+    gap: var(--size-3);
     align-items: center;
-    gap: var(--space-sm);
+    transition: transform 60ms ease-in;
 
-    &__logo {
-      height: 6rem;
-    }
-
-    transition: transform 0.1s;
+    box-shadow: var(--shadow-3);
 
     &:hover {
       transform: scale(1.05);
     }
+  }
 
-    &__minilinks {
-      margin-top: auto;
-      display: flex;
-      gap: var(--space-xs);
-      align-items: center;
-      justify-content: center;
-    }
+  .card-logo {
+    height: 3.5rem;
+    background-color: white;
+  }
+
+  :global(.card-text) {
+    font-size: var(--font-size-0);
+    display: grid;
+    gap: var(--size-3);
   }
 </style>
+
+<article class="ht-card ht-container dashboard-card">
+  <div class="card-logo">
+    <img class="card-logo" src={logo} alt="card logo" />
+  </div>
+  <div class="card-text"><slot /></div>
+  <div class="ht-flex-align-center">
+    {miniLinks.map(({ url, type }) => <MiniLink url={url} type={type} />)}
+  </div>
+</article>

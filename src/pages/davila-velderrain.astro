@@ -1,57 +1,33 @@
 ---
+import { getCollection } from "astro:content";
+
 import Layout from "../layouts/Layout.astro";
-import DashboardHeader from "../components/DashboardHeader.astro";
+
 import DashboardCard from "../components/DashboardCard.astro";
+import DashboardHeader from "../components/DashboardHeader.astro";
 
-import MiniLink from "../components/MiniLink.astro";
+const cards = await getCollection("davila-velderrain");
 
-import actionetLogo from "../images/davila/actionet.png";
-
-const cards = {
-  actionet: {
-    title: "ACTIONet",
-    logo: actionetLogo,
-    alt: "ACTIONet logo",
-    website: "http://compbio.mit.edu/ACTIONet/",
-    links: {
-      github: "https://github.com/shmohammadi86/ACTIONet/",
-    },
-  },
+const groupLink = {
+  label: "Davila-Velderrain Group",
+  url: "https://humantechnopole.it/en/research-groups/davila-velderrain-group/",
 };
 ---
 
-<Layout title="Davila-Velderrain Group">
-  <DashboardHeader slot="header">
-    <a
-      slot="logo"
-      href="https://humantechnopole.it/en/research-groups/davila-velderrain-group/"
-      target="_blank"
-      class="link"
-      >Davila-Velderrain Group
-    </a>
-  </DashboardHeader>
-  <h1 slot="title">Davila-Velderrain Group</h1>
-  <h2 slot="title">Manuscripts, Apps and Tools</h2>
-  <DashboardCard
-    slot="grid"
-    title={cards.actionet.title}
-    logo={cards.actionet.logo}
-    alt={cards.actionet.alt}
-  >
-    <p class="text--sm">
-      ACTIONet, a comprehensive framework that combines archetypal analysisand
-      network theory to provide a ready-to-use analytical approach
-      formultiresolution single-cell state characterization.
-    </p>
-    <a
-      href={cards.actionet.website}
-      class="btn btn--primary btn--sm btn--full-width"
-      target="_blank"><span>Website</span></a
-    >
-    <MiniLink
-      slot="minilinks"
-      url={cards.actionet.links.github}
-      type="github"
-    />
-  </DashboardCard>
+<Layout>
+  <DashboardHeader slot="header" url={groupLink.url} label={groupLink.label} />
+
+  <h2 class="title" slot="heading">Davila-Velderrain Group</h2>
+  <h3 class="title" slot="heading">Apps, Tools and Computable Manuscripts</h3>
+  {
+    cards.map(async (card) => {
+      const { Content } = await card.render();
+      const miniLinks = card.data.miniLinks;
+      return (
+        <DashboardCard miniLinks={miniLinks} logo={card.data.logo}>
+          <Content />
+        </DashboardCard>
+      );
+    })
+  }
 </Layout>
