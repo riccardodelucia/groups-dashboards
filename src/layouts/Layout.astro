@@ -1,7 +1,7 @@
 ---
 import "@computational-biology-sw-web-dev-unit/ht-design/style.css";
 
-import  {HTFooter} from "@computational-biology-sw-web-dev-unit/ht-vue/components";
+import HTFooter from "@computational-biology-sw-web-dev-unit/ht-vue/HTFooter.vue"
 
 import Heading from "../components/Heading.astro";
 ---
@@ -51,7 +51,7 @@ import Heading from "../components/Heading.astro";
         <div class="ht-layout-stack"><slot name="heading" /></div>
         <section class="ht-grid-auto cards-grid"><slot /></section>
       </main>
-      <HTFooter />
+     <HTFooter /> 
     </div>
   </body>
 </html>

@@ -14,6 +14,7 @@
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/vue": "^2.0.1",
     "@computational-biology-sw-web-dev-unit/ht-design": "^0.0.2",
+    "@computational-biology-sw-web-dev-unit/ht-vue": "^0.1.0",
     "astro": "^2.0.5",
     "vue": "^3.2.47",
     "vue-feather": "^2.0.0"
