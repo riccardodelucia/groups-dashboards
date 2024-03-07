@@ -2,20 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 
 import { getCollection } from "astro:content";
-const groups = await getCollection("group_leaders");
-
-
-import  {HTHeaderWeb}  from "@computational-biology-sw-web-dev-unit/ht-vue";
-import  {HTThemeSwitcher}  from "@computational-biology-sw-web-dev-unit/ht-vue";
+import { Image } from "astro:assets";
+const groups = await getCollection("groups");
 
 import "@computational-biology-sw-web-dev-unit/ht-design/style.css";
 import '@computational-biology-sw-web-dev-unit/ht-vue/style.css'
 
-import GroupCard from "../components/GroupCard.astro";
 
 ---
 
-<style>
+<style lang="scss">
   .header-content {
     display: flex;
     height: 100%;
@@ -28,12 +24,46 @@ import GroupCard from "../components/GroupCard.astro";
       justify-content: flex-end;
     }
   }
+
+  .groups-card {
+    width: 20rem;
+    text-align: center;
+    transition: transform 0.1s;
+
+    box-shadow: var(--shadow-3);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      object-fit: cover;
+      filter: grayscale(1);
+      width:100%;
+    }
+
+    p {
+      font-size: var(--font-size-0)
+    }
+  }
+
 </style>
 
 <Layout heading="HT Groups">
-  <HTHeaderWeb slot="header" client:only>
+<!--   <HTHeaderWeb slot="header" client:only>
     <div class="header-content"><HTThemeSwitcher client:only /></div>
-  </HTHeaderWeb>
+  </HTHeaderWeb> -->
   <h2 class="title" slot="heading">HT Groups</h2>
-  {groups.map((group) => <GroupCard group={group} />)}
+ {groups.map((group) => 
+ <article class="groups-card ht-card">
+  <a class="ht-reset" href={group.slug}>
+  <Image src={group.data.cover} alt={group.data.coverAlt} ></Image>
+  
+  <div class="ht-container">
+    <h2>{group.data.name}</h2>
+    <p>{group.data.center}</p>
+  </div>
+  </a>
+ </article>)}
+
 </Layout>
