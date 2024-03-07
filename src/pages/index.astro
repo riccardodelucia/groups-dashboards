@@ -1,75 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import { getCollection } from "astro:content";
+const groups = await getCollection("group_leaders");
+
+
 import  {HTHeaderWeb}  from "@computational-biology-sw-web-dev-unit/ht-vue";
 import  {HTThemeSwitcher}  from "@computational-biology-sw-web-dev-unit/ht-vue";
 
 import "@computational-biology-sw-web-dev-unit/ht-design/style.css";
-import '@computational-biology-sw-web-dev-unit/ht-vue/style.css';
-
+import '@computational-biology-sw-web-dev-unit/ht-vue/style.css'
 
 import GroupCard from "../components/GroupCard.astro";
 
-import calvielloImg from "../images/group-leaders/calviello-300x300.jpeg";
-import davilaImg from "../images/group-leaders//davila-300x300.jpeg";
-import glastonburyImg from "../images/group-leaders//glastonbury-300x300.jpeg";
-import iorioImg from "../images/group-leaders//iorio-300x300.jpeg";
-import jugImg from "../images/group-leaders//jug-300x370.jpeg";
-import pinheiroImg from "../images/group-leaders//pinheiro-300x225.jpeg";
-import sottorivaImg from "../images/group-leaders//sottoriva-300x300.jpeg";
-
-
-const groups = [
-  /* {
-    slug: "/calviello",
-    src: calvielloImg,
-    alt: "Calviello img",
-    name: "Calviello Group",
-    center: "Genomics/ Computational Biology",
-  }, */
-  {
-    slug: "/davila-velderrain",
-    src: davilaImg,
-    alt: "Davila-Velderrain img",
-    name: "Davila-Velderrain Group",
-    center: "Neurogenomics/ Computational Biology",
-  },
-  /* {
-    slug: "/glastonbury",
-    src: glastonburyImg,
-    alt: "Glastonbury img",
-    name: "Glastonbury Group",
-    center: "Genomics/ Computational Biology",
-  }, */
-  {
-    slug: "/iorio",
-    src: iorioImg,
-    alt: "Iorio img",
-    name: "Iorio Group",
-    center: "Computational Biology",
-  },
-  /* {
-    slug: "/jug",
-    src: jugImg,
-    alt: "Jug img",
-    name: "Jug Group",
-    center: "Computational Biology",
-  }, */
-  /* {
-    slug: "/pinheiro",
-    src: pinheiroImg,
-    alt: "Pinheiro img",
-    name: "Pinheiro Group",
-    center: "Computational Biology",
-  }, */
-  {
-    slug: "/sottoriva",
-    src: sottorivaImg,
-    alt: "Sottoriva img",
-    name: "Sottoriva Group",
-    center: "Computational Biology",
-  },
-];
 ---
 
 <style>

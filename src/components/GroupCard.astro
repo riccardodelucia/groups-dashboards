@@ -1,32 +1,19 @@
 ---
-
-import { Image } from 'astro:assets';
-
 const { group } = Astro.props;
-const { src, alt, name, center, slug } = group;
+
+const {Content} = await group.render();
+const { slug } = group;
 ---
 
-<article class="ht-card">
+<article class="groups-card ht-card">
   <a class="ht-reset" href={slug}>
-    <Image src={src} alt={alt}></Image>
-    <div class="ht-container">
-      <h2>{name}</h2>
-      <small>{center}</small>
-    </div>
-  </a>
+  <Content></Content>
+</a>
 </article>
 
-<style lang="scss">
-  .ht-card {
-    overflow: hidden;
-  }
+<style lang="scss" is:global>
 
-  .ht-container {
-    --padding-block: 1em;
-    --padding-inline: 1em;
-  }
-
-  article {
+  .groups-card {
     width: 20rem;
     padding: 0;
     text-align: center;
@@ -34,6 +21,10 @@ const { src, alt, name, center, slug } = group;
     transition: transform 0.1s;
 
     box-shadow: var(--shadow-3);
+
+    font-size: var(--font-size-0);
+
+    padding-bottom: var(--size-3);
 
     &:hover {
       transform: scale(1.05);
