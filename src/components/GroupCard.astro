@@ -1,16 +1,19 @@
 ---
+
+import { Image } from 'astro:assets';
+
 const { group } = Astro.props;
 const { src, alt, name, center, slug } = group;
 ---
 
 <article class="ht-card">
-  <a class="ht-reset" href={slug}
-    ><img src={src} alt={alt} />
+  <a class="ht-reset" href={slug}>
+    <Image src={src} alt={alt}></Image>
     <div class="ht-container">
       <h2>{name}</h2>
       <small>{center}</small>
-    </div></a
-  >
+    </div>
+  </a>
 </article>
 
 <style lang="scss">
