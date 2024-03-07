@@ -11,14 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vue": "^4.0.8",
     "@computational-biology-sw-web-dev-unit/ht-design": "^0.0.2",
     "@computational-biology-sw-web-dev-unit/ht-vue": "^0.1.0",
+    "astro": "^4.4.14",
     "vue": "^3.4.21"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.1.1",
-    "@astrojs/vue": "^4.0.8",
-    "astro": "^4.4.13",
     "autoprefixer": "^10.4.17",
     "postcss-comment": "^2.0.0",
     "postcss-import": "^16.0.1",
