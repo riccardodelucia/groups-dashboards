@@ -16,7 +16,7 @@ miniLinks:
     },
   ]
 
-logo: "/assets/images/iorio/cesta.png"
+logo: "./cesta.png"
 ---
 
 ## CeSta

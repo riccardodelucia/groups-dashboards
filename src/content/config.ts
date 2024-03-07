@@ -13,6 +13,14 @@ const groupsCollection = defineCollection({
   }),
 });
 
+const cardsCollection = defineCollection({
+  schema: ({ image }) => z.object({
+    miniLinks: z.array(z.object({type:z.string(), url: z.string()})),
+    logo: image(),
+  }),
+});
+
 export const collections = {
   groups: groupsCollection,
+  cards: cardsCollection
 };

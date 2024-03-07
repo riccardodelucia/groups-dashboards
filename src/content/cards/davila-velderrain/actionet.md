@@ -2,7 +2,7 @@
 miniLinks:
   [{ type: "github", url: "https://github.com/shmohammadi86/ACTIONet/" }]
 
-logo: "/assets/images/davila-velderrain/actionet.png"
+logo: "./actionet.png"
 ---
 
 ## ACTIONet

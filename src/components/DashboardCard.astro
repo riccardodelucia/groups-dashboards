@@ -1,6 +1,9 @@
 ---
 import MiniLink from "./MiniLink.astro";
-const { miniLinks, logo } = Astro.props;
+import { Image } from "astro:assets";
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
 ---
 
 <style>
@@ -23,6 +26,7 @@ const { miniLinks, logo } = Astro.props;
 
   .card-logo {
     height: 3.5rem;
+    width: auto;
     background-color: white;
   }
 
@@ -35,10 +39,10 @@ const { miniLinks, logo } = Astro.props;
 
 <article class="ht-card ht-container dashboard-card">
   <div class="card-logo">
-    <img class="card-logo" src={logo} alt="card logo" />
+    <Image class="card-logo" src={entry.data.logo} alt="card logo"  />
   </div>
-  <div class="card-text"><slot /></div>
+  <div class="card-text"><Content /></div>
   <div class="ht-flex-align-center">
-    {miniLinks.map(({ url, type }) => <MiniLink url={url} type={type} />)}
+    {entry.data.miniLinks.map(({ url, type }) => <MiniLink url={url} type={type} />)}
   </div>
 </article>

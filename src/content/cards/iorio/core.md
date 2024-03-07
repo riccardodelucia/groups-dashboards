@@ -11,7 +11,7 @@ miniLinks:
       url: "https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-021-08129-5",
     },
   ]
-logo: "/assets/images/iorio/core.png"
+logo: "./core.png"
 ---
 
 ## coRe

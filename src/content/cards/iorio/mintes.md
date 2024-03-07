@@ -11,7 +11,7 @@ miniLinks:
       url: "https://www.cell.com/cell-reports/fulltext/S2211-1247(22)00954-8?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2211124722009548%3Fshowall%3Dtrue",
     },
   ]
-logo: "/assets/images/iorio/mintes.png"
+logo: "./mintes.png"
 ---
 
 ## MinTEs

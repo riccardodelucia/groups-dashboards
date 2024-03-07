@@ -20,7 +20,7 @@ miniLinks:
       url: "https://doi.org/10.6084/m9.figshare.c.6011476.v1",
     },
   ]
-logo: "/assets/images/sottoriva/epicc.png"
+logo: "./epicc.png"
 ---
 
 ## EPICC

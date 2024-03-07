@@ -9,7 +9,7 @@ miniLinks:
     },
   ]
 
-logo: "/assets/images/iorio/cellector.png"
+logo: "./cellector.png"
 ---
 
 ## CELLector

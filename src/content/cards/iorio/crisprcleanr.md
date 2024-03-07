@@ -1,7 +1,7 @@
 ---
 miniLinks:
   [{ type: "github", url: "https://github.com/francescojm/CRISPRcleanR" }]
-logo: "/assets/images/iorio/crisprcleanr.svg"
+logo: "./crisprcleanr.svg"
 ---
 
 ## CRISPRcleanR
