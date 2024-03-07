@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import DashboardCard from "../components/DashboardCard.astro";
+
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths(){
+    const groupsEntries = await getCollection("groups")
+    console.log("here")
+    return groupsEntries.map(entry => ({params: {slug: entry.slug}, props: {entry}}))
+   
+}
+
+const {entry} = Astro.props;
+
+const cards = await getCollection("cards", ({id})=>{return id.startsWith(entry.data.collection)});
+
+---
+
+<Layout url={entry.data.url} name={entry.data.name}>
+    <h2 class="title" slot="heading">{entry.data.name}</h2>
+    <h3 class="title" slot="heading">Apps, Tools and Computable Manuscripts</h3>
+    {
+        cards.map(async (card) => {
+          return (
+            <DashboardCard entry={card}>
+            </DashboardCard>
+          );
+        })
+    }
+</Layout>
+

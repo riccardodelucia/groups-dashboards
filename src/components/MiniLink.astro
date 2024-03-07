@@ -1,19 +1,16 @@
 ---
-import logoColab from "../images/minilinks/colab.svg";
-import logoEga from "../images/minilinks/ega.png";
-import logoFigshare from "../images/minilinks/figshare.png";
-import logoMendeley from "../images/minilinks/mendeley.png";
-import logoShiny from "../images/minilinks/shiny.png";
-import logoBitbucket from "../images/minilinks/bitbucket.svg";
+import { Image } from "astro:assets";
+
+import logoColab from "../assets/minilinks/colab.svg";
+import logoEga from "../assets/minilinks/ega.png";
+import logoFigshare from "../assets/minilinks/figshare.png";
+import logoMendeley from "../assets/minilinks/mendeley.png";
+import logoShiny from "../assets/minilinks/shiny.png";
+import logoBitbucket from "../assets/minilinks/bitbucket.svg";
 
 const { url, type } = Astro.props;
 ---
 
-<style>
-  svg path {
-    fill: var(--ht-text-color-1);
-  }
-</style>
 
 <a href={url} target="_blank">
   {
@@ -33,9 +30,9 @@ const { url, type } = Astro.props;
             </div>
           );
         case "colab":
-          return <img class="colab" src={logoColab} alt="google colab logo" />;
+          return <Image class="minilink-logo" src={logoColab} alt="google colab logo" />;
         case "shiny":
-          return <img class="minilink-logo" src={logoShiny} alt="shiny logo" />;
+          return <Image class="minilink-logo" src={logoShiny} alt="shiny logo"  />;
         case "paper":
           return (
             <div class="ht-flex-align-center">
@@ -60,7 +57,7 @@ const { url, type } = Astro.props;
           );
         case "ega":
           return (
-            <img
+            <Image
               class="minilink-logo"
               src={logoEga}
               alt="european genome phenome archive logo"
@@ -68,15 +65,15 @@ const { url, type } = Astro.props;
           );
         case "figshare":
           return (
-            <img class="minilink-logo" src={logoFigshare} alt="figshare logo" />
+            <Image class="minilink-logo" src={logoFigshare} alt="figshare logo" />
           );
         case "mendeley":
           return (
-            <img class="minilink-logo" src={logoMendeley} alt="mendeley logo" />
+            <Image class="minilink-logo" src={logoMendeley} alt="mendeley logo" />
           );
         case "bitbucket":
           return (
-            <img
+            <Image
               class="minilink-logo"
               src={logoBitbucket}
               alt="bitbucket logo"
@@ -88,12 +85,15 @@ const { url, type } = Astro.props;
     }
   }
 </a>
+
 <style>
-  .colab {
-    width: 3rem;
-  }
 
   .minilink-logo {
+    width: auto;
     height: 1.7rem;
+  }
+
+  svg path {
+    fill: var(--ht-text-color-1);
   }
 </style>
