@@ -8,7 +8,8 @@ const groupsCollection = defineCollection({
     }),
     coverAlt: z.string(),
     center: z.string(),
-    url: z.string()
+    url: z.string(),
+    collection: z.string()
   }),
 });
 
