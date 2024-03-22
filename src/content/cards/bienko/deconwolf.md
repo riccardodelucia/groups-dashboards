@@ -9,3 +9,6 @@ logo: "./deconwolf.png"
 
 The fastest user-friendly and open-source software for image deconvolution.
 
+<a href="https://deconwolf.fht.org" class="ht-button">
+  Go to Webapp
+</a>
