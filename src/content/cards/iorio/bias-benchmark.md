@@ -13,5 +13,4 @@ logo: "./bias-benchmark.png"
 
 ## Structural Bias Benchmark
 
-Patient-genomics-guided selection of cancer in vitro models allowing in-silico drug/target prescriptions.
-Benchmark of state-of-the-art computational methods for correcting biased of established and unknown origin in CRISPR-Cas9 screening data.
+Benchmark of state-of-the-art computational methods for correcting biases of established and unknown origin in CRISPR-Cas9 screening data.
