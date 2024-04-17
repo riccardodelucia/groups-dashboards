@@ -1,5 +1,5 @@
 {
-  "name": "@computational-biology-sw-web-dev-unit/groups-dashboards",
+  "name": "@nf-daha-iu3/groups-dashboards",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@astrojs/vue": "^4.0.8",
-    "@computational-biology-sw-web-dev-unit/ht-design": "^0.0.2",
-    "@computational-biology-sw-web-dev-unit/ht-vue": "^0.1.0",
+    "@nf-daha-iu3/ht-design": "^0.0.2",
+    "@nf-daha-iu3/ht-vue": "^0.1.0",
     "astro": "^4.4.14",
     "vue": "^3.4.21"
   },
