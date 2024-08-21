@@ -90,7 +90,7 @@ deploy to nginx:
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo $STATIC_WEBSERVER_KEY > ~/.ssh/id_rsa
+    - cat "${STATIC_WEBSERVER_KEY}" > ~/.ssh/id_rsa
     - chmod 400 ~/.ssh/id_rsa
     - ssh-add ~/.ssh/id_rsa
   script:
