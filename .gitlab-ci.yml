@@ -84,7 +84,7 @@ build website:
 
 deploy to nginx:
   stage: deploy
-  image: ubuntu:24.10
+  image: debian:bullseye-slim
   before_script:
     - apt-get update -y && apt-get upgrade -y && apt-get install openssh-client -y
     #- 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
