@@ -95,7 +95,8 @@ deploy to nginx:
     #- chmod 400 ~/.ssh/id_rsa
     #- ssh-add ~/.ssh/id_rsa
   script:
-    - ls -la /mykey
-    - scp -r -o StrictHostKeychecking=no -i /mykey/ssh-key dist/ riccardo.delucia@$STATIC_WEBSERVER:/var/www/groups_dashboards_test
+    - cp /mykey/ssh-key .
+    - chmod 600 ssh-key
+    - scp -r -o StrictHostKeychecking=no -i ssh-key dist/ riccardo.delucia@$STATIC_WEBSERVER:/var/www/groups_dashboards_test
     #- ssh -o StrictHostKeyChecking=no $USER@$STATIC_WEBSERVER 'chown -R nginx:gitlab-deploy /var/www/proj2/dist/*'
 
