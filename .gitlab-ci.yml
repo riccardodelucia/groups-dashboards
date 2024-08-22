@@ -85,15 +85,15 @@ build website:
 deploy to nginx:
   stage: deploy
   image: debian:bullseye-slim
-  before_script:
-    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - cat "${STATIC_WEBSERVER_KEY}" > ~/.ssh/id_rsa
-    - chmod 400 ~/.ssh/id_rsa
-    - ssh-add ~/.ssh/id_rsa
+  #before_script:
+    #- 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    #- eval $(ssh-agent -s)
+    #- mkdir -p ~/.ssh
+    #- chmod 700 ~/.ssh
+    #- cat "${STATIC_WEBSERVER_KEY}" > ~/.ssh/id_rsa
+    #- chmod 400 ~/.ssh/id_rsa
+    #- ssh-add ~/.ssh/id_rsa
   script:
-    - scp -r -o StrictHostKeychecking=no -i ~/.ssh/id_rsa dist/ riccardo.delucia@$STATIC_WEBSERVER:/var/www/groups_dashboards_test
+    - scp -r -o StrictHostKeychecking=no -i ~/ssh-key riccardo.delucia@$STATIC_WEBSERVER:/var/www/groups_dashboards_test
     #- ssh -o StrictHostKeyChecking=no $USER@$STATIC_WEBSERVER 'chown -R nginx:gitlab-deploy /var/www/proj2/dist/*'
 
