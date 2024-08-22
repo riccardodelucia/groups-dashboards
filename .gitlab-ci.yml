@@ -86,7 +86,7 @@ deploy to nginx:
   stage: deploy
   image: ubuntu:24.10
   before_script:
-    - apt-get update && apt-get upgrade && apt-get install openssh-client
+    - apt-get update -y && apt-get upgrade -y && apt-get install openssh-client -y
     #- 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
     #- eval $(ssh-agent -s)
     #- mkdir -p ~/.ssh
