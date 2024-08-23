@@ -56,47 +56,21 @@ include:
       - if: $CI_COMMIT_BRANCH == 'production'
         when: always
       - when: never
+  
+  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_static_webserver@initial_setup
+    inputs:
+      environment: groups_dashboards
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        when: always
+      - when: never
 
-  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_environment@initial_setup
+  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_static_webserver@initial_setup
     inputs:
       tag: $CI_COMMIT_SHORT_SHA
-      environment: production
+      environment: groups_dashboards
     rules:
       - if: $CI_COMMIT_BRANCH == 'production'
         when: always
       - when: never
-
-build website:
-  stage: build
-  image: node:18-alpine
-  variables:
-    PACKAGE_REGISTRY_PROJECT_ID: 194 # because before_script doesn't have access to CICD custom variables
-  before_script:
-    - echo $PACKAGE_REGISTRY_PROJECT_ID
-    - npm config set -- //${CI_SERVER_HOST}/api/v4/projects/${PACKAGE_REGISTRY_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}
-    - npm config set @${CI_PROJECT_NAMESPACE}:registry=https://${CI_SERVER_HOST}/api/v4/projects/${PACKAGE_REGISTRY_PROJECT_ID}/packages/npm/
-    - npm install
-  script:
-    - npm run build
-  artifacts:
-    paths:
-      - dist
-
-deploy to nginx:
-  stage: deploy
-  image: debian:bullseye-slim
-  before_script:
-    - apt-get update -y && apt-get upgrade -y && apt-get install openssh-client -y
-    #- 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-    #- eval $(ssh-agent -s)
-    #- mkdir -p ~/.ssh
-    #- chmod 700 ~/.ssh
-    #- cat "${STATIC_WEBSERVER_KEY}" > ~/.ssh/id_rsa
-    #- chmod 400 ~/.ssh/id_rsa
-    #- ssh-add ~/.ssh/id_rsa
-  script:
-    - cp /mykey/ssh-key .
-    - chmod 600 ssh-key
-    - scp -r -o StrictHostKeychecking=no -i ssh-key dist/ riccardo.delucia@$STATIC_WEBSERVER:/var/www/groups_dashboards_test
-    #- ssh -o StrictHostKeyChecking=no $USER@$STATIC_WEBSERVER 'chown -R nginx:gitlab-deploy /var/www/proj2/dist/*'
 
