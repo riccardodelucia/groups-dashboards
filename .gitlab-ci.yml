@@ -36,20 +36,6 @@ include:
       - if: $CI_COMMIT_BRANCH == 'production'
         when: always
       - when: never
-
-  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/package_image@initial_setup
-    rules:
-      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-        when: always
-      - when: never
-
-  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/package_image@initial_setup
-    inputs:
-      tag: $CI_COMMIT_SHORT_SHA
-    rules:
-      - if: $CI_COMMIT_BRANCH == 'production'
-        when: always
-      - when: never
   
   - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_static_webserver@initial_setup
     inputs:
@@ -62,7 +48,6 @@ include:
 
   - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_static_webserver@initial_setup
     inputs:
-      tag: $CI_COMMIT_SHORT_SHA
       folder_name: groups_dashboards
       environment: production
     rules:
