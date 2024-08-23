@@ -56,12 +56,21 @@ include:
       - if: $CI_COMMIT_BRANCH == 'production'
         when: always
       - when: never
+  
+  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_static_webserver@initial_setup
+    inputs:
+      environment: groups_dashboards
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        when: always
+      - when: never
 
-  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_environment@initial_setup
+  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_static_webserver@initial_setup
     inputs:
       tag: $CI_COMMIT_SHORT_SHA
-      environment: production
+      environment: groups_dashboards
     rules:
       - if: $CI_COMMIT_BRANCH == 'production'
         when: always
       - when: never
+
