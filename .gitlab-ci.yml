@@ -3,10 +3,11 @@ stages:
   - build
   - deploy
 
+
 ####################################################################################################
 include:
 
-  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/test_build_vite@initial_setup
+  - component: $CICD_COMPONENTS_PROJECT/test_build_vite@$CICD_COMPONENTS_COMMIT_REF
     inputs:
       stage: test
     rules:
@@ -16,7 +17,7 @@ include:
         when: never
       - when: always
 
-  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/build_vite@initial_setup
+  - component: $CICD_COMPONENTS_PROJECT/build_vite@$CICD_COMPONENTS_COMMIT_REF
     inputs:
       stage: build
     rules:
@@ -26,7 +27,7 @@ include:
         when: always
       - when: never
   
-  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_static_webserver@initial_setup
+  - component: $CICD_COMPONENTS_PROJECT/deploy_to_static_webserver@$CICD_COMPONENTS_COMMIT_REF
     inputs:
       folder_name: groups_dashboards
       environment: staging
@@ -35,7 +36,7 @@ include:
         when: always
       - when: never
 
-  - component: gitlab.fht.org/nf-daha-iu3/cicd-components/deploy_to_static_webserver@initial_setup
+  - component: $CICD_COMPONENTS_PROJECT/deploy_to_static_webserver@$CICD_COMPONENTS_COMMIT_REF
     inputs:
       folder_name: groups_dashboards
       environment: production
