@@ -1,8 +1,0 @@
-version: "3.8"
-
-services:
-  groups-dashboards:
-    image: "$CI_REGISTRY_IMAGE:$TAG"
-    ports:
-      - $PORT:80
-    command: nginx
