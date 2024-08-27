@@ -3,6 +3,8 @@ stages:
   - build
   - deploy
 
+variables:
+  WEBSERVER_FOLDER_NAME: groups_dashboards
 
 ####################################################################################################
 include:
@@ -29,7 +31,7 @@ include:
   
   - component: $CICD_COMPONENTS_PROJECT/deploy_to_static_webserver@$CICD_COMPONENTS_COMMIT_REF
     inputs:
-      folder_name: groups_dashboards
+      folder_name: $WEBSERVER_FOLDER_NAME
       environment: staging
     rules:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -38,7 +40,7 @@ include:
 
   - component: $CICD_COMPONENTS_PROJECT/deploy_to_static_webserver@$CICD_COMPONENTS_COMMIT_REF
     inputs:
-      folder_name: groups_dashboards
+      folder_name: $WEBSERVER_FOLDER_NAME
       environment: production
     rules:
       - if: $CI_COMMIT_BRANCH == 'production'
