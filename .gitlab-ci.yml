@@ -16,8 +16,6 @@ include:
   - component: $CICD_COMPONENTS_PROJECT/build_vite@$CICD_COMPONENTS_COMMIT_REF
     inputs:
       stage: build
-      input_env_file: deploy.env
-      output_env_file: production.env
     rules:
       - if: $CI_COMMIT_BRANCH == 'staging'
         when: always
@@ -27,8 +25,6 @@ include:
   - component: $CICD_COMPONENTS_PROJECT/build_vite@$CICD_COMPONENTS_COMMIT_REF
     inputs:
       stage: build
-      input_env_file: deploy.env
-      output_env_file: production.env
     rules:
       - if: $CI_COMMIT_BRANCH == 'production'
         when: always
