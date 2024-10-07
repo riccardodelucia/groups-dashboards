@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+
+import logoColab from "../assets/minilinks/colab.svg";
+import logoEga from "../assets/minilinks/ega.png";
+import logoFigshare from "../assets/minilinks/figshare.png";
+import logoMendeley from "../assets/minilinks/mendeley.png";
+import logoShiny from "../assets/minilinks/shiny.png";
+import logoBitbucket from "../assets/minilinks/bitbucket.svg";
+
+const { url, type } = Astro.props;
+---
+
+
+<a href={url} target="_blank">
+  {
+    () => {
+      switch (type) {
+        case "github":
+          return (
+            <div class="ht-flex-align-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </div>
+          );
+        case "colab":
+          return <Image class="minilink-logo" src={logoColab} alt="google colab logo" />;
+        case "shiny":
+          return <Image class="minilink-logo" src={logoShiny} alt="shiny logo"  />;
+        case "paper":
+          return (
+            <div class="ht-flex-align-center">
+              <svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 104.7 122.88"
+                style="enable-background:new 0 0 104.7 122.88"
+                xml:space="preserve"
+                width="24"
+                height="24"
+              >
+                <g>
+                  <path d="M7.33,0h90.05c2.03,0,3.86,0.82,5.18,2.14c1.32,1.32,2.14,3.16,2.14,5.18v108.23c0,2.03-0.82,3.86-2.14,5.18 c-1.32,1.32-3.16,2.14-5.18,2.14H7.33c-2.03,0-3.86-0.82-5.18-2.14C0.82,119.42,0,117.58,0,115.55V7.33C0,5.3,0.82,3.46,2.14,2.14 C3.46,0.82,5.3,0,7.33,0L7.33,0z M54.14,44.74h-5.39c-1.9,0-3.44-1.55-3.44-3.44c0-7.09-1.81-14.87,6.88-17.1 c3.94-1.01,4.96,3.33,0.78,3.63c-2.55,0.18-3.05,1.83-3.13,4.33h4.41c1.9,0,3.44,1.55,3.44,3.44v5.59 C57.69,43.15,56.09,44.74,54.14,44.74L54.14,44.74L54.14,44.74z M37.89,44.74H32.5c-1.89,0-3.44-1.55-3.44-3.44 c0-7.09-1.81-14.87,6.88-17.1c3.94-1.01,4.96,3.33,0.78,3.63c-2.55,0.18-3.05,1.83-3.13,4.33h4.41c1.9,0,3.44,1.55,3.44,3.44v5.59 C41.43,43.15,39.84,44.74,37.89,44.74L37.89,44.74L37.89,44.74z M66.33,41.55c-1.74,0-3.16-1.41-3.16-3.16 c0-1.74,1.41-3.16,3.16-3.16h7.03c1.74,0,3.16,1.41,3.16,3.16c0,1.74-1.41,3.16-3.16,3.16H66.33L66.33,41.55z M29.95,61.54 c-1.74,0-3.16-1.41-3.16-3.16c0-1.74,1.41-3.16,3.16-3.16h44.8c1.74,0,3.16,1.41,3.16,3.16c0,1.74-1.41,3.16-3.16,3.16H29.95 L29.95,61.54z M29.95,80.19c-1.74,0-3.16-1.41-3.16-3.16c0-1.74,1.41-3.16,3.16-3.16h44.8c1.74,0,3.16,1.41,3.16,3.16 c0,1.74-1.41,3.16-3.16,3.16H29.95L29.95,80.19z M29.95,98.83c-1.74,0-3.16-1.41-3.16-3.16c0-1.74,1.41-3.16,3.16-3.16h44.8 c1.74,0,3.16,1.41,3.16,3.16c0,1.74-1.41,3.16-3.16,3.16H29.95L29.95,98.83z M97.37,6.31H7.33c-0.28,0-0.54,0.12-0.73,0.31 C6.41,6.81,6.29,7.07,6.29,7.35v108.23c0,0.28,0.12,0.54,0.31,0.73c0.19,0.19,0.45,0.31,0.73,0.31l90.05,0 c0.28,0,0.54-0.12,0.73-0.31c0.19-0.19,0.31-0.45,0.31-0.73l0-108.23c0-0.28-0.12-0.54-0.31-0.73C97.91,6.43,97.65,6.31,97.37,6.31 L97.37,6.31L97.37,6.31z" />
+                </g>
+              </svg>
+            </div>
+          );
+        case "ega":
+          return (
+            <Image
+              class="minilink-logo"
+              src={logoEga}
+              alt="european genome phenome archive logo"
+            />
+          );
+        case "figshare":
+          return (
+            <Image class="minilink-logo" src={logoFigshare} alt="figshare logo" />
+          );
+        case "mendeley":
+          return (
+            <Image class="minilink-logo" src={logoMendeley} alt="mendeley logo" />
+          );
+        case "bitbucket":
+          return (
+            <Image
+              class="minilink-logo"
+              src={logoBitbucket}
+              alt="bitbucket logo"
+            />
+          );
+        default:
+          return undefined;
+      }
+    }
+  }
+</a>
+
+<style>
+
+  .minilink-logo {
+    width: auto;
+    height: 1.7rem;
+  }
+
+  svg path {
+    fill: var(--ht-text-color-1);
+  }
+</style>

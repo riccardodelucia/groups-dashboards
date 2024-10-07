@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "@nf-data-iu3/groups-dashboards",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -11,6 +11,19 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.0.5"
+    "@astrojs/vue": "^4.0.8",
+    "@nf-data-iu3/ht-design": "^0.0.1",
+    "@nf-data-iu3/ht-vue": "^0.0.1",
+    "astro": "^4.4.14",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss-comment": "^2.0.0",
+    "postcss-import": "^16.0.1",
+    "postcss-nested": "^6.0.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-astro": "^0.13.0",
+    "sass": "^1.58.1"
   }
 }
