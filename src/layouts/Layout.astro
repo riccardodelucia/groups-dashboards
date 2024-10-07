@@ -1,35 +1,107 @@
 ---
-export interface Props {
-	title: string;
-}
+import "@nf-data-iu3/ht-design/style.css";
+import "@nf-data-iu3/ht-vue/style.css";
 
-const { title } = Astro.props;
+import  {HTFooter} from "@nf-data-iu3/ht-vue"
+
+import  {HTHeaderWeb}  from "@nf-data-iu3/ht-vue";
+import  {HTThemeSwitcher}  from "@nf-data-iu3/ht-vue";
+
+import Heading from "../components/Heading.astro";
+
+const {url, name} = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+<style>
+  .container {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .header-content {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    padding-block: var(--size-3);
+  }
+
+  @media (min-width: 50em) {
+    .header-content{
+      justify-content: flex-end;
+    }
+  }
+
+  nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-block: var(--size-3);
+
+
+  }
+
+  @media (min-width: 50em) {
+
+    nav{
+      flex-direction: row;
+      justify-content: flex-end;
+
+      & > *:nth-child(2) {
+        margin-left: auto;
+      }
+    }
+  }
+
+  main {
+    justify-items: center;
+    padding-block: 2rem;
+  }
+
+  .cards-grid {
+    --grid-gap: 4rem;
+    --grid-min-item-size: 20rem;
+    --grid-placement: auto-fit;
+    justify-items: center;
+    margin-top: var(--size-7);
+  }
+
+  :global(h2.title, h3.title) {
+    text-align: center;
+    color: var(--ht-text-color-2);
+    line-height: var(--font-lineheight-1);
+  }
+  :global(h2.title) {
+    font-size: var(--font-size-8);
+    line-height: var(--font-lineheight-1);
+  }
+  :global(h3.title) {
+    font-size: var(--font-size-5);
+  }
 </style>
+
+<html lang="en">
+  <head>
+    <Heading title="Groups Dashboards" />
+  </head>
+  <body>
+    <div class="container">
+      <HTHeaderWeb client:only>
+        <nav>
+          {url && (<a href={url} class="ht-reset" target="_blank">{name}</a>)}
+          <!-- <a href={url} class="ht-reset" target="_blank">{label}</a> -->
+          <a href="/" class="ht-reset">HT Groups</a>
+          <div class="header-content"><HTThemeSwitcher client:only /></div>
+        </nav>
+      </HTHeaderWeb>
+      <main class="ht-wrapper">
+        <div class="ht-layout-stack"><slot name="heading" /></div>
+        <section class="ht-grid-auto cards-grid"><slot /></section>
+      </main>
+     <HTFooter /> 
+    </div>
+  </body>
+</html>
