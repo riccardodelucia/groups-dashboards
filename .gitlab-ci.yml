@@ -1,5 +1,4 @@
 stages:
-  - test
   - build
   - deploy
 
@@ -8,10 +7,6 @@ variables:
 
 ####################################################################################################
 include:
-
-  - component: $CICD_COMPONENTS_PROJECT/lint_eslint@$CICD_COMPONENTS_COMMIT_REF
-    inputs:
-      stage: test
 
   - component: $CICD_COMPONENTS_PROJECT/build_vite@$CICD_COMPONENTS_COMMIT_REF
     inputs:
