@@ -2,14 +2,14 @@
 import "@nf-data-iu3/ht-design/style.css";
 import "@nf-data-iu3/ht-vue/style.css";
 
-import  {HTFooter} from "@nf-data-iu3/ht-vue"
+import { HTFooter } from "@nf-data-iu3/ht-vue";
 
-import  {HTHeaderWeb}  from "@nf-data-iu3/ht-vue";
-import  {HTThemeSwitcher}  from "@nf-data-iu3/ht-vue";
+import { HTHeaderWeb } from "@nf-data-iu3/ht-vue";
+import { HTThemeSwitcher } from "@nf-data-iu3/ht-vue";
 
 import Heading from "../components/Heading.astro";
 
-const {url, name} = Astro.props;
+const { url, name } = Astro.props;
 ---
 
 <style>
@@ -27,7 +27,7 @@ const {url, name} = Astro.props;
   }
 
   @media (min-width: 50em) {
-    .header-content{
+    .header-content {
       justify-content: flex-end;
     }
   }
@@ -40,13 +40,10 @@ const {url, name} = Astro.props;
     justify-content: center;
     gap: 1rem;
     padding-block: var(--size-3);
-
-
   }
 
   @media (min-width: 50em) {
-
-    nav{
+    nav {
       flex-direction: row;
       justify-content: flex-end;
 
@@ -67,6 +64,7 @@ const {url, name} = Astro.props;
     --grid-placement: auto-fit;
     justify-items: center;
     margin-top: var(--size-7);
+    width: 100%;
   }
 
   :global(h2.title, h3.title) {
@@ -91,7 +89,13 @@ const {url, name} = Astro.props;
     <div class="container">
       <HTHeaderWeb client:only>
         <nav>
-          {url && (<a href={url} class="ht-reset" target="_blank">{name}</a>)}
+          {
+            url && (
+              <a href={url} class="ht-reset" target="_blank">
+                {name}
+              </a>
+            )
+          }
           <!-- <a href={url} class="ht-reset" target="_blank">{label}</a> -->
           <a href="/" class="ht-reset">HT Groups</a>
           <div class="header-content"><HTThemeSwitcher client:only /></div>
@@ -101,7 +105,7 @@ const {url, name} = Astro.props;
         <div class="ht-layout-stack"><slot name="heading" /></div>
         <section class="ht-grid-auto cards-grid"><slot /></section>
       </main>
-     <HTFooter /> 
+      <HTFooter />
     </div>
   </body>
 </html>
